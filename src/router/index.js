@@ -1,21 +1,38 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 
 const routes = [
+  // 登录
   {
     path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    name: "Login",
+    hidden: true,
+    meta: { label: "登录" },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "login" */ "@/views/user/Login.vue"),
   },
+  // 管理后台 - 首页
+  {
+    path: "/home",
+    name: "home",
+    meta: {
+      label: "首页",
+      icon: "index"
+    },
+    redirect: "index",
+    component: () =>
+      import(/* webpackChunkName: "layoutWrap" */ "@/views/layout/LayoutWrap.vue"),
+    children: [
+      {
+        path: "/index",
+        name: "index",
+        component: () =>
+          import(/* webpackChunkName: "Home" */ "@/views/home/Home"),
+        meta: {
+          label: "首页",
+        }
+      },
+    ]
+  }
 ];
 
 const router = createRouter({
