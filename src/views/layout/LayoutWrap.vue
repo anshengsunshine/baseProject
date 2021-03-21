@@ -1,56 +1,81 @@
 <template>
-  <a-layout id="components-layout-demo-custom-trigger">
-    <a-layout-header>
-      <div class="header_wrap">
-        <span class="title">XXX项目</span>
-        <a-icon
+  <a-layout id="layout_wrap">
+    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+      <div class="logo" />
+      <layout-aside />
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header class="layput_header_wrap">
+        <menu-unfold-outlined
+          v-if="collapsed"
           class="trigger"
-          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
           @click="() => (collapsed = !collapsed)"
         />
-        <span class="exit" @click="exit">退出登录</span>
-      </div>
-    </a-layout-header>
-    <a-layout>
-      <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
-        <!-- <layout-aside /> -->
-      </a-layout-sider>
-      <a-layout-content>
-        <router-view></router-view>
-      </a-layout-content>
+        <menu-fold-outlined
+          v-else
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
+        <layout-header />
+      </a-layout-header>
+      <layout-content class="layout_content_wrap" />
+      <a-layout-footer>
+        <layout-footer class="layout_footer_wrap" />
+      </a-layout-footer>
     </a-layout>
-    <a-layout-footer>
-      <layout-footer />
-    </a-layout-footer>
   </a-layout>
 </template>
 <script>
-import LayoutAside from "./child/LayoutAside";
-import LayoutFooter from "./child/LayoutFooter";
+import {
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+} from "@ant-design/icons-vue";
+import { ref } from "vue";
+import LayoutHeader from "./child/Header";
+import LayoutFooter from "./child/Footer";
+import LayoutAside from "./child/Aside";
+import LayoutContent from "./child/Content";
 export default {
   name: "LayoutWrap",
   components: {
-    LayoutAside,
+    UserOutlined,
+    VideoCameraOutlined,
+    UploadOutlined,
+    MenuUnfoldOutlined,
+    MenuFoldOutlined,
+    LayoutHeader,
     LayoutFooter,
+    LayoutAside,
+    LayoutContent,
   },
-  data() {
+
+  setup() {
     return {
-      collapsed: false,
+      selectedKeys: ref(["1"]),
+      collapsed: ref(false),
     };
-  },
-  methods: {
-    exit() {
-      this.$store.dispatch("app/exit").then((res) => {
-        this.$router.push({
-          path: "/",
-        });
-      });
-    },
   },
 };
 </script>
 <style lang="less" scoped>
-#components-layout-demo-custom-trigger {
+#layout_wrap {
+  .layput_header_wrap {
+    padding:0;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    background: #fff;
+  }
+
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 16px;
+  }
   .trigger {
     font-size: 18px;
     line-height: 64px;
@@ -59,21 +84,15 @@ export default {
     transition: color 0.3s;
   }
   .trigger:hover {
-    color: #2364ef;
+    color: #1890ff;
   }
-  .header_wrap {
-    padding-left: 24px;
-    position: relative;
-    font-family: Microsoft YaHei-Bold;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: #fff;
-    .exit {
-      position: absolute;
-      right: 0;
-      padding: 0 20px;
-      cursor: pointer;
-    }
+  .layout_content_wrap {
+    margin: 0 auto;
+    padding-top: 26px;
+    width: 1200px;
+    min-width: 1200px;
+    height: 100%;
+    min-height: 80vh;
   }
 }
 </style>

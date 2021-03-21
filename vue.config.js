@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  runtimeCompiler: true,
   // 基本路径
   publicPath: process.env.NODE_ENV === 'production' ? '' : './',
   // 输出文件目录
