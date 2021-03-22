@@ -13,7 +13,7 @@
       <template v-if="!item.hidden">
         <!-- 这里是一级 -->
         <a-menu-item v-if="hasOnlyChildren(item)" :key="item.path">
-          <router-link :to="item.children[0].path">
+          <router-link class="menu_item" :to="item.children[0].path">
             <span class="anticon">
               <svg-icon
                 className="aside_svg"
@@ -121,24 +121,3 @@ export default {
   },
 };
 </script>
-<style lang="less" scoped>
-#logo {
-  padding: 24px 0 20px;
-  border-bottom: 1px solid #000;
-  text-align: center;
-  img {
-    display: inline-block;
-  }
-}
-.aside_menu {
-  i.icon {
-    margin-right: 5px;
-    opacity: 0.6;
-  }
-  .ant-menu-item-selected {
-    i.icon {
-      opacity: 1;
-    }
-  }
-}
-</style>

@@ -8,7 +8,25 @@ const routes = [
     hidden: true,
     meta: { label: "登录" },
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/user/Login.vue"),
+      import(/* webpackChunkName: "Login" */ "@/views/user/Login"),
+  },
+  // 注册
+  {
+    path: "/register",
+    name: "Register",
+    hidden: true,
+    meta: { label: "注册" },
+    component: () =>
+      import(/* webpackChunkName: "Register" */ "@/views/user/Register"),
+  },
+  // 忘记密码
+  {
+    path: "/forget",
+    name: "Forget",
+    hidden: true,
+    meta: { label: "忘记密码" },
+    component: () =>
+      import(/* webpackChunkName: "Forget" */ "@/views/user/Forget"),
   },
   // 首页
   {
@@ -16,7 +34,7 @@ const routes = [
     name: "home",
     meta: {
       label: "1-0",
-      icon: "index"
+      icon: "home"
     },
     component: () =>
       import(/* webpackChunkName: "layoutWrap" */ "@/views/layout/LayoutWrap.vue"),
@@ -39,17 +57,6 @@ const routes = [
         meta: {
           label: "1-2",
         },
-        children: [
-          {
-            path: "/three3",
-            name: "three3",
-            component: () =>
-              import(/* webpackChunkName: "Home" */ "@/views/home/Home"),
-            meta: {
-              label: "1-2-1",
-            },
-          }
-        ]
       },
     ]
   },
@@ -58,7 +65,7 @@ const routes = [
     name: "First2",
     meta: {
       label: "2-0",
-      icon: "index"
+      icon: "first"
     },
     component: () =>
       import(/* webpackChunkName: "layoutWrap" */ "@/views/layout/LayoutWrap.vue"),
@@ -80,7 +87,7 @@ const routes = [
         meta: {
           label: "2-2",
         },
-        children:[
+        children: [
           {
             path: "/three3",
             name: "three3",
@@ -99,7 +106,7 @@ const routes = [
     name: "First3",
     meta: {
       label: "3-0",
-      icon: "index"
+      icon: "second"
     },
     component: () =>
       import(/* webpackChunkName: "layoutWrap" */ "@/views/layout/LayoutWrap.vue"),

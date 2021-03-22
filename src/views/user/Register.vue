@@ -1,19 +1,19 @@
 <template>
   <div class="user_wrap">
     <div class="userform_txt_wrap">
-      <p class="user_txt font_fSY_M">登录</p>
-      <login-form />
+      <p class="user_txt font_fSY_M">注册</p>
+      <register-form />
     </div>
   </div>
 </template>
 
 <script>
-import LoginForm from "./child/LoginForm";
+import RegisterForm from "./child/RegisterForm";
 
 export default {
-  name: "Login",
+  name: "Register",
   components: {
-    LoginForm,
+    RegisterForm,
   },
 };
 </script>
