@@ -38,16 +38,16 @@ const mutations = {
 const actions = {
     login(content, requestData) {
         return new Promise((resolve, reject) => {
-            Login(requestData).then(res => {
-                let data = res.data;
-                content.commit('SET_TOKEN', "Bearer " + data.jwtToken)
-                // content.commit('SET_USERNAME', data.username)
-                setToken("Bearer " + data.jwtToken)
-                // setUsername(data.username)
-                resolve(res)
-            }).catch(err => {
-                reject(err)
-            })
+            // Login(requestData).then(res => {
+            //     let data = res.data;
+            //     content.commit('SET_TOKEN', "Bearer " + data.jwtToken)
+            //     // content.commit('SET_USERNAME', data.username)
+            //     setToken("Bearer " + data.jwtToken)
+            //     // setUsername(data.username)
+            //     resolve(res)
+            // }).catch(err => {
+            //     reject(err)
+            // })
         })
     },
     exit({

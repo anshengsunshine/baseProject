@@ -64,7 +64,7 @@
     </a-form-item>
 
     <a-form-item class="form_item">
-      <a-button type="primary" html-type="submit">登录</a-button>
+      <a-button type="primary" class="w100" html-type="submit">注册</a-button>
     </a-form-item>
     <a-form-item class="form_item">
       <router-link to="/" class="to_register">去登录</router-link> |
